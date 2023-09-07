@@ -32,7 +32,7 @@ services:
     image: oskalis/kittygram_gateway
     env_file: .env
     volumes:
-      - static:/static
+      - static:/staticfiles/
       - media:/media
     ports:
       - 9000:80
