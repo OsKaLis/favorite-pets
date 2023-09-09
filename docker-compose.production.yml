@@ -17,7 +17,7 @@ services:
     env_file: .env
     volumes:
       - static:/backend_static
-      - media:/home/yc-user/kittygram_final/app/web/media
+      - media:/media
     depends_on:
       - db
   frontend:
@@ -33,7 +33,7 @@ services:
     env_file: .env
     volumes:
       - static:/static/
-      - media:/home/yc-user/kittygram_final/app/web/media
+      - media:/media
     ports:
       - 9000:80
     depends_on:

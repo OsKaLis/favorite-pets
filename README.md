@@ -1,3 +1,65 @@
+# Kittygram_final
+## Что это за проект, какую задачу он решает, в чём его польза;
+```
+Kittygram — социальная сеть для обмена фотографиями любимых питомцев.
+```
+
+## Как развернуть проект на локальной машине.
+```
+1 ] (Клонируем проект) :git clone git@github.com:OsKaLis/infra_sprint1.git
+2 ] (водим пароль если доступ приватный)
+3 ] (Переходим в директорию проекта) :cd infra_sprint1/
+4 ] (Устанавливаем изарированое окружение) :python -m venv venv 
+5 ] (Запускаем изалированное окружение, в разных операционках запускается по разному,
+этот вариант черес ОС Windows 10 Pro консол Git Bash Here) :source venv/Scripts/activate
+6 ] (Обновляем pip до актуальной версии) : python -m pip install --upgrade pip
+7 ] (Устанавливаем нужное для работы) :pip install -r requirements.txt
+8 ] (Переходим в backend/, сам проект) :cd /backend/
+9 ] (Запускаем миграцию баз) : python manage.py migrate
+10] (Запуск проекта) :python manage.py runserver
+11] (По умолчанию нужно перейти по адресу) :http://127.0.0.1:8000/api/v1/
+12] (По всем запросам есть документация ) :http://127.0.0.1:8000/redoc/#tag/api
+```
+
+## Некоторые примеры запросов к api_final.
+
+[ Запрос ковсем постам созданые на этом сервере.]
+[GET] :https://cat-lovers.ru/api/cats/
+
+[ Создание новый пост авторизованным пользователем.]
+[POST] :https://cat-lovers.ru/cats/add/
+```
+rew JSON:
+{
+    "name": "Vasyka",
+    "color": "#FFFFFF",
+    "birth_year": 2020,
+    "owner": 5,
+    "achievements": [],
+    "image": null
+}
+```
+
+[ Создание токена.]
+[POST] : https://cat-lovers.ru/api/token/login/
+```
+rew JSON:
+{
+    "username": "lisa",
+    "password": "sFPRojyq"
+}
+```
+
+## Cтек технологий:
+```
+1 ] Cистема управления базами данных SQLite
+2 ] Язык программирования Python
+3 ] Фреймворк django, rest, React
+```
+
+## Автор: Юшко Ю.Ю.
+
+
 #  Как работать с репозиторием финального задания
 
 ## Что нужно сделать
