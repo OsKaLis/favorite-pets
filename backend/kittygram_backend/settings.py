@@ -7,7 +7,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY', uuid.uuid4()) 
 
-DEBUG = os.getenv('DEBUG', bool(0)) == 'True'
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = ['158.160.75.139', '127.0.0.1', 'localhost', 'cat-lovers.ru']
 
