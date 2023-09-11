@@ -6,19 +6,45 @@ Kittygram — социальная сеть для обмена фотограф
 
 ## Как развернуть проект на локальной машине.
 ```
-1 ] (Клонируем проект) :git clone git@github.com:OsKaLis/infra_sprint1.git
-2 ] (водим пароль если доступ приватный)
-3 ] (Переходим в директорию проекта) :cd infra_sprint1/
-4 ] (Устанавливаем изарированое окружение) :python -m venv venv 
-5 ] (Запускаем изалированное окружение, в разных операционках запускается по разному,
-этот вариант черес ОС Windows 10 Pro консол Git Bash Here) :source venv/Scripts/activate
-6 ] (Обновляем pip до актуальной версии) : python -m pip install --upgrade pip
-7 ] (Устанавливаем нужное для работы) :pip install -r requirements.txt
-8 ] (Переходим в backend/, сам проект) :cd /backend/
-9 ] (Запускаем миграцию баз) : python manage.py migrate
-10] (Запуск проекта) :python manage.py runserver
-11] (По умолчанию нужно перейти по адресу) :http://127.0.0.1:8000/api/v1/
-12] (По всем запросам есть документация ) :http://127.0.0.1:8000/redoc/#tag/api
+1  ] (Клонируем проект) :git clone git@github.com:OsKaLis/kittygram_final.git
+2  ] (водим пароль если доступ приватный)
+3  ] (Переходим в директорию проекта) :cd kittygram_final/
+
+4  ] (Установка): docker
+5  ] (Установка docker для Windows) https://learn.microsoft.com/ru-ru/windows/wsl/install
+
+6  ] (Создание файла с настройками ".env"):
+```
+6.1] POSTGRES_DB=[{Своё значение название базы}]
+6.2] POSTGRES_USER=[{Своё значение имя пользователя для подключения к базе}]
+6.3] POSTGRES_PASSWORD=[{Своё значение пароля для базы}]
+6.4] DB_NAME=[{Своё значение название базы}]
+6.5] # Добавляем переменные для Django-проекта:
+6.6] DB_HOST=db
+6.7] DB_PORT=5432
+6.8] SECRET_KEY=[{Своё значение key}]
+6.9] DEBUG=False
+```
+7  ] (Установка dpcker для Linux): 
+7.1] sudo apt update
+7.2] sudo apt install curl
+7.3] curl -fSL https://get.docker.com -o get-docker.sh 
+7.4] sudo sh ./get-docker.sh
+7.5] sudo apt-get install docker-compose-plugin 
+7.6] # systemctl — программа, контролирующая работу системных демонов
+   ] # status docker — команда, проверяющая статус демона Docker
+   ] sudo systemctl status docker 
+
+8  ] (Запуск проекта)
+8.1] (Запускаем основные контейнеры): sudo docker compose up -d
+8.2] (Выполняет миграции и сбор статики):
+8.3] sudo docker compose exec backend python manage.py migrate
+8.4] sudo docker compose exec backend python manage.py collectstatic
+8.5] sudo docker compose exec backend cp -r /app/collected_static/. /backend_static/static/
+
+9  ] (Главная адрес проекта): http://127.0.0.1:9000/
+10 ] (API адрес проекта) :http://127.0.0.1:9000/api/
+11 ] (Админка проекта) :http://127.0.0.1:9000/admin/
 ```
 
 ## Некоторые примеры запросов к api_final.
