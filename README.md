@@ -1,59 +1,58 @@
-# Favorite_Pets
-## Что это за проект, какую задачу он решает, в чём его польза;
-```
-Favorite_Pets — социальная сеть для обмена фотографиями любимых питомцев.
-```
+<div id="header" align="center">
+  <h1>Проект Favorite_Pets</h1>
+</div>
 
-## Как развернуть проект на локальной машине.
-```
-1  ] (Клонируем проект) :git clone git@github.com:OsKaLis/kittygram_final.git
-2  ] (водим пароль если доступ приватный)
-3  ] (Переходим в директорию проекта) :cd kittygram_final/
+## Что это за проект, какую задачу он решает, в чём его польза:
+> [!NOTE]
+> Favorite_Pets — социальная сеть для обмена фотографиями любимых питомцев.
 
-4  ] (Установка): docker
-5  ] (Установка docker для Windows) https://learn.microsoft.com/ru-ru/windows/wsl/install
+## Как развернуть проект на локальной машине:
+> [!IMPORTANT]
+> * [1] (Клонируем проект) :git clone git@github.com:OsKaLis/favorite-pets.git
+> * [2] (Переходим в директорию проекта) :cd favorite-pets/
+> * [3] (Создание файла с настройками ".env"):
+>   ```
+>   POSTGRES_DB=[{Своё значение название базы}]
+>   POSTGRES_USER=[{Своё значение имя пользователя для подключения к базе}]
+>   POSTGRES_PASSWORD=[{Своё значение пароля для базы}]
+>   DB_NAME=[{Своё значение название базы}]
+>   # Добавляем переменные для Django-проекта:
+>   DB_HOST=db
+>   DB_PORT=5432
+>   SECRET_KEY=[{Своё значение key}]
+>   DEBUG=False
+> * [4] (Установка docker для Windows) https://learn.microsoft.com/ru-ru/windows/wsl/install
+> * [5] (Установка dpcker для Linux):
+>   ``` 
+>   [1] sudo apt update
+>   [2] sudo apt install curl
+>   [3] curl -fSL https://get.docker.com -o get-docker.sh 
+>   [4] sudo sh ./get-docker.sh
+>   [5] sudo apt-get install docker-compose-plugin
+>   [6] sudo systemctl status docker
+>   systemctl — программа, контролирующая работу системных демонов
+>   status docker — команда, проверяющая статус демона Docker
+> * [6] (Запуск проекта)
+>   ```
+>   [1] (Запускаем основные контейнеры): sudo docker compose up -d
+>   [2] (Выполняет миграции и сбор статики):
+>   [3] sudo docker compose exec backend python manage.py migrate
+>   [4] sudo docker compose exec backend python manage.py collectstatic
+>   [5] sudo docker compose exec backend cp -r /app/collected_static/. /backend_static/static/
+> * [7] (Главная адрес проекта): http://127.0.0.1:9000/
+> * [8] (API адрес проекта) :http://127.0.0.1:9000/api/
+> * [9] (Админка проекта) :http://127.0.0.1:9000/admin/
 
-6  ] (Создание файла с настройками ".env"):
-```
-6.1] POSTGRES_DB=[{Своё значение название базы}]
-6.2] POSTGRES_USER=[{Своё значение имя пользователя для подключения к базе}]
-6.3] POSTGRES_PASSWORD=[{Своё значение пароля для базы}]
-6.4] DB_NAME=[{Своё значение название базы}]
-6.5] # Добавляем переменные для Django-проекта:
-6.6] DB_HOST=db
-6.7] DB_PORT=5432
-6.8] SECRET_KEY=[{Своё значение key}]
-6.9] DEBUG=False
-```
-7  ] (Установка dpcker для Linux): 
-7.1] sudo apt update
-7.2] sudo apt install curl
-7.3] curl -fSL https://get.docker.com -o get-docker.sh 
-7.4] sudo sh ./get-docker.sh
-7.5] sudo apt-get install docker-compose-plugin 
-7.6] # systemctl — программа, контролирующая работу системных демонов
-   ] # status docker — команда, проверяющая статус демона Docker
-   ] sudo systemctl status docker 
-
-8  ] (Запуск проекта)
-8.1] (Запускаем основные контейнеры): sudo docker compose up -d
-8.2] (Выполняет миграции и сбор статики):
-8.3] sudo docker compose exec backend python manage.py migrate
-8.4] sudo docker compose exec backend python manage.py collectstatic
-8.5] sudo docker compose exec backend cp -r /app/collected_static/. /backend_static/static/
-
-9  ] (Главная адрес проекта): http://127.0.0.1:9000/
-10 ] (API адрес проекта) :http://127.0.0.1:9000/api/
-11 ] (Админка проекта) :http://127.0.0.1:9000/admin/
-```
+## Cтек технологий:
+<img src="https://img.shields.io/badge/Python_-3.9.10-Green">  <img src="https://img.shields.io/badge/SQLite_-3.41.2-steelblue">  <img src="https://img.shields.io/badge/django_-3.2.3-Green">
+<img src="https://img.shields.io/badge/djangorestframework_-3.12.4-Green">  <img src="https://img.shields.io/badge/React_-17.0.2-aqua">  <img src="https://img.shields.io/badge/nginx:_-1.22.1-black">
+<img src="https://img.shields.io/badge/docker_-24.0.5-blue">  <img src="https://img.shields.io/badge/docker_compose_-3.0-blue">  <img src="https://img.shields.io/badge/gunicorn_-20.1.0-Green">
 
 ## Некоторые примеры запросов к api_final.
 
-[ Запрос ковсем постам созданые на этом сервере.]
-[GET] :https://cat-lovers.ru/api/cats/
+### Запрос ковсем постам созданые на этом сервере, [GET] :https://cat-lovers.ru/api/cats/
 
-[ Создание новый пост авторизованным пользователем.]
-[POST] :https://cat-lovers.ru/cats/add/
+### Создание новый пост авторизованным пользователем, [POST] :https://cat-lovers.ru/cats/add/
 ```
 rew JSON:
 {
@@ -66,8 +65,7 @@ rew JSON:
 }
 ```
 
-[ Создание токена.]
-[POST] : https://cat-lovers.ru/api/token/login/
+### Создание токена, [POST] : https://cat-lovers.ru/api/token/login/
 ```
 rew JSON:
 {
@@ -76,39 +74,4 @@ rew JSON:
 }
 ```
 
-## Cтек технологий:
-```
-1 ] Cистема управления базами данных SQLite
-2 ] Язык программирования Python
-3 ] Фреймворк django, rest, React
-```
-
 ## Автор: Юшко Ю.Ю.
-
-
-#  Как работать с репозиторием финального задания
-
-## Что нужно сделать
-
-Настроить запуск проекта Kittygram в контейнерах и CI/CD с помощью GitHub Actions
-
-## Как проверить работу с помощью автотестов
-
-В корне репозитория создайте файл tests.yml со следующим содержимым:
-```yaml
-repo_owner: ваш_логин_на_гитхабе
-kittygram_domain: полная ссылка (https://доменное_имя) на ваш проект Kittygram
-taski_domain: полная ссылка (https://доменное_имя) на ваш проект Taski
-dockerhub_username: ваш_логин_на_докерхабе
-```
-
-Скопируйте содержимое файла `.github/workflows/main.yml` в файл `kittygram_workflow.yml` в корневой директории проекта.
-
-Для локального запуска тестов создайте виртуальное окружение, установите в него зависимости из backend/requirements.txt и запустите в корневой директории проекта `pytest`.
-
-## Чек-лист для проверки перед отправкой задания
-
-- Проект Taski доступен по доменному имени, указанному в `tests.yml`.
-- Проект Kittygram доступен по доменному имени, указанному в `tests.yml`.
-- Пуш в ветку main запускает тестирование и деплой Kittygram, а после успешного деплоя вам приходит сообщение в телеграм.
-- В корне проекта есть файл `kittygram_workflow.yml`.
