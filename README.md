@@ -48,11 +48,11 @@
 <img src="https://img.shields.io/badge/djangorestframework_-3.12.4-Green">  <img src="https://img.shields.io/badge/React_-17.0.2-aqua">  <img src="https://img.shields.io/badge/nginx:_-1.22.1-black">
 <img src="https://img.shields.io/badge/docker_-24.0.5-blue">  <img src="https://img.shields.io/badge/docker_compose_-3.0-blue">  <img src="https://img.shields.io/badge/gunicorn_-20.1.0-Green">
 
-## Некоторые примеры запросов к api_final.
+## Некоторые примеры запросов к favorite-pets.
 
-### Запрос ковсем постам созданые на этом сервере, [GET] :https://cat-lovers.ru/api/cats/
+### Запрос ковсем постам созданые на этом сервере, [GET]: http://127.0.0.1:9000/api/cats/
 
-### Создание новый пост авторизованным пользователем, [POST] :https://cat-lovers.ru/cats/add/
+### Создание новый пост авторизованным пользователем, [POST]: http://127.0.0.1:9000/cats/add/
 ```
 rew JSON:
 {
@@ -65,7 +65,7 @@ rew JSON:
 }
 ```
 
-### Создание токена, [POST] : https://cat-lovers.ru/api/token/login/
+### Создание токена, [POST]: http://127.0.0.1:9000/api/token/login/
 ```
 rew JSON:
 {
